@@ -1,4 +1,4 @@
-package com.drolewski.generator;
+package com.drolewski.model;
 
 public class Job {
     private int durationTime;

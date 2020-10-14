@@ -1,5 +1,7 @@
 package com.drolewski.generator;
 
+import com.drolewski.model.Job;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

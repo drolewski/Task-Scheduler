@@ -1,6 +1,6 @@
 package com.drolewski.verifier;
 
-import com.drolewski.generator.Job;
+import com.drolewski.model.Job;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,6 +1,6 @@
 package com.drolewski.main;
 
-import com.drolewski.generator.Job;
+import com.drolewski.model.Job;
 import com.drolewski.verifier.OutputData;
 
 import java.util.List;

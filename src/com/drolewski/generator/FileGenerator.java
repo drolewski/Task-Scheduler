@@ -1,5 +1,7 @@
 package com.drolewski.generator;
 
+import com.drolewski.model.Job;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
