@@ -26,7 +26,7 @@ public class FileGenerator {
             BufferedWriter out = new BufferedWriter(outputFile);
             out.write("0\n");
             for(int i = 1; i <= instanceSize; ++i){
-                out.write(i + "\n");
+                out.write(i + " ");
             }
             out.close();
         } catch (IOException ex) {
