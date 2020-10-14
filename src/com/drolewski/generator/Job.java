@@ -35,4 +35,14 @@ public class Job {
                 " " + this.getExpectedEndTime() +
                 " " + this.getWeight() + "\n";
     }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "durationTime=" + durationTime +
+                ", readyMoment=" + readyMoment +
+                ", expectedEndTime=" + expectedEndTime +
+                ", weight=" + weight +
+                '}';
+    }
 }
