@@ -5,13 +5,13 @@ import com.drolewski.model.Job;
 import java.util.List;
 
 public class Verifier {
-    private static int lateTaskValue = 0;
-    private static int currentTime = 0;
 
     private static int evaluateOutputData(OutputData outputData, List<Job> inputData) {
+        int currentTime = 1;
+        int lateTaskValue = 0;
         for(Integer i : outputData.getJobOrder()) {
             Job job = inputData.get(i - 1);
-            currentTime += job.getReadyMoment() + job.getDurationTime();
+            currentTime += job.getDurationTime();
             if(currentTime > job.getExpectedEndTime()){
                 lateTaskValue += job.getWeight();
             }

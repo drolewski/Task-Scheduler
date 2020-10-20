@@ -21,8 +21,9 @@ public class Main {
 
         // validate solution
         for (int i = 0; i < outputData.size(); ++i) {
+            System.out.println(outputData.get(i).getFileName());
             boolean result = verifySolution(outputData.get(i), jobsList.get(i));
-            System.out.println(result);
+            System.out.println(result + "\n");
         }
     }
 }

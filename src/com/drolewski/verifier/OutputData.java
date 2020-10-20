@@ -3,12 +3,14 @@ package com.drolewski.verifier;
 import java.util.List;
 
 public class OutputData {
+    private String fileName;
     private List<Integer> jobOrder;
-    private int criteriaValue = 0;
+    private int criteriaValue;
 
-    public OutputData(List<Integer> jobOrder, int criteriaValue) {
+    public OutputData(List<Integer> jobOrder, int criteriaValue, String fileName) {
         this.jobOrder = jobOrder;
         this.criteriaValue = criteriaValue;
+        this.fileName = fileName;
     }
 
     public List<Integer> getJobOrder() {
@@ -17,6 +19,10 @@ public class OutputData {
 
     public int getCriteriaValue() {
         return criteriaValue;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 
     @Override

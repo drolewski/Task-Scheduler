@@ -55,7 +55,7 @@ public class FileDataReader {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return new OutputData(tasks, algorithmValue);
+        return new OutputData(tasks, algorithmValue, fileName);
     }
 
     public static List<List<Job>> readInputData(String directoryPath) {
