@@ -10,7 +10,7 @@ import java.util.List;
 public class FileGenerator {
     public static void saveInputFile(List<Job> jobs) {
         try {
-            FileWriter inputFile = new FileWriter("src/com/drolewski/generator/generatedData/in136792 " + jobs.size() + ".txt");
+            FileWriter inputFile = new FileWriter("src/com/drolewski/generator/generatedData/in136792_" + jobs.size() + ".txt");
             BufferedWriter out = new BufferedWriter(inputFile);
             out.write(jobs.size() + "\n");
             for(Job job : jobs){
@@ -24,7 +24,7 @@ public class FileGenerator {
 
     public static void saveOutputFile(int instanceSize) {
         try {
-            FileWriter outputFile = new FileWriter("src/com/drolewski/generator/generatedData/out136792 " + instanceSize + ".txt");
+            FileWriter outputFile = new FileWriter("src/com/drolewski/generator/generatedData/out136792_" + instanceSize + ".txt");
             BufferedWriter out = new BufferedWriter(outputFile);
             out.write("0\n");
             for(int i = 1; i <= instanceSize; ++i){

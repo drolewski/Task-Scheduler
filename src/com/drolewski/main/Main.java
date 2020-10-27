@@ -1,5 +1,6 @@
 package com.drolewski.main;
 
+import com.drolewski.generator.Generator;
 import com.drolewski.model.Job;
 import com.drolewski.verifier.OutputData;
 
@@ -11,6 +12,7 @@ import static com.drolewski.verifier.Verifier.verifySolution;
 
 public class Main {
     public static void main(String[] args) {
+        Generator.generateAllInstances();
         // read data from input
         List<List<Job>> jobsList = readInputData("src/com/drolewski/generator/generatedData");
 

@@ -62,7 +62,7 @@ public class FileDataReader {
         var directory = new File(directoryPath);
         List<List<Job>> jobDataList = new ArrayList<>();
         for(File file : Objects.requireNonNull(directory.listFiles())) {
-            if(file.getName().matches("^in[0-9]{6}\\s[0-9]+\\.txt$")){
+            if(file.getName().matches("^in[0-9]{6}_[0-9]+\\.txt$")){
                 List<Job> jobs = FileDataReader.readInputFile(file.getPath());
                 jobDataList.add(jobs);
             }
@@ -74,7 +74,7 @@ public class FileDataReader {
         var directory = new File(directoryPath);
         List<OutputData> orderedTaskList = new ArrayList<>();
         for(File file : Objects.requireNonNull(directory.listFiles())) {
-            if(file.getName().matches("^out[0-9]{6}\\s[0-9]+\\.txt$")){
+            if(file.getName().matches("^out[0-9]{6}_[0-9]+\\.txt$")){
                 OutputData outputTaskList = FileDataReader.readOutputFile(file.getPath());
                 orderedTaskList.add(outputTaskList);
             }
