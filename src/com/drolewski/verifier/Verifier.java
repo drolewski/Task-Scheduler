@@ -11,6 +11,9 @@ public class Verifier {
         int lateTaskValue = 0;
         for(Integer i : outputData.getJobOrder()) {
             Job job = inputData.get(i - 1);
+            if(currentTime < job.getReadyMoment()){
+                currentTime = job.getReadyMoment();
+            }
             currentTime += job.getDurationTime();
             if(currentTime > job.getExpectedEndTime()){
                 lateTaskValue += job.getWeight();

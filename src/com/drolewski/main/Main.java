@@ -12,7 +12,6 @@ import static com.drolewski.verifier.Verifier.verifySolution;
 
 public class Main {
     public static void main(String[] args) {
-        Generator.generateAllInstances();
         // read data from input
         List<List<Job>> jobsList = readInputData("src/com/drolewski/generator/generatedData");
 
