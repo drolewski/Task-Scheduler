@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import static com.drolewski.verifier.Verifier.evaluateOutputData;
+
 public class FileGenerator {
     public static void saveInputFile(List<Job> jobs) {
         try {
@@ -28,6 +30,21 @@ public class FileGenerator {
             BufferedWriter out = new BufferedWriter(outputFile);
             out.write("0\n");
             for(int i = 1; i <= instanceSize; ++i){
+                out.write(i + " ");
+            }
+            out.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void saveOutputDataFile(List<Integer> jobsSchedule, List<Job> jobs){
+        try {
+            FileWriter outputFile = new FileWriter("src/com/drolewski/generator/generatedData/out136792_" + jobsSchedule.size() + ".txt");
+            BufferedWriter out = new BufferedWriter(outputFile);
+            int value = evaluateOutputData(jobsSchedule, jobs);
+            out.write(value + "\n");
+            for(Integer i : jobsSchedule){
                 out.write(i + " ");
             }
             out.close();
