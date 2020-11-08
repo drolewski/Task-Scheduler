@@ -16,7 +16,7 @@ public class SingleProcessorApproximation {
 
     public List<Integer> approximationAlgorithm(List<Job> jobs) {
         List<Job> jobsCopy = new ArrayList<>(jobs);
-        jobs.sort(Comparator.comparingInt(Job::getReadyMoment));
+        jobs.sort(Comparator.comparingInt(Job::getDurationTime));
         for (Job job : jobs) {
             this.jobsWithRatio.add(new JobWithRatio(job, calculateScheduleRatio(job)));
         }
