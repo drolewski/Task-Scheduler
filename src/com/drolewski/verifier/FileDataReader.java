@@ -58,13 +58,13 @@ public class FileDataReader {
         return new OutputData(tasks, algorithmValue, fileName);
     }
 
-    public static List<List<Job>> readInputData(String directoryPath) {
+    public static List<InputData> readInputData(String directoryPath) {
         var directory = new File(directoryPath);
-        List<List<Job>> jobDataList = new ArrayList<>();
+        List<InputData> jobDataList = new ArrayList<>();
         for(File file : Objects.requireNonNull(directory.listFiles())) {
             if(file.getName().matches("^in[0-9]{6}_[0-9]+\\.txt$")){
                 List<Job> jobs = FileDataReader.readInputFile(file.getPath());
-                jobDataList.add(jobs);
+                jobDataList.add(new InputData(file.getName(), jobs));
             }
         }
         return jobDataList;

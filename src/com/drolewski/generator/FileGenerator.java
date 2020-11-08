@@ -1,6 +1,7 @@
 package com.drolewski.generator;
 
 import com.drolewski.model.Job;
+import com.drolewski.verifier.InputData;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -38,11 +39,11 @@ public class FileGenerator {
         }
     }
 
-    public static void saveOutputDataFile(List<Integer> jobsSchedule, List<Job> jobs){
+    public static void saveOutputDataFile(List<Integer> jobsSchedule, InputData inputData){
         try {
-            FileWriter outputFile = new FileWriter("src/com/drolewski/generator/generatedData/out136792_" + jobsSchedule.size() + ".txt");
+            FileWriter outputFile = new FileWriter("src/com/drolewski/generator/generatedData/" + "out" + inputData.getFileName().substring(2,9) + jobsSchedule.size() + ".txt");
             BufferedWriter out = new BufferedWriter(outputFile);
-            int value = evaluateOutputData(jobsSchedule, jobs);
+            int value = evaluateOutputData(jobsSchedule, inputData.getJobs());
             out.write(value + "\n");
             for(Integer i : jobsSchedule){
                 out.write(i + " ");
