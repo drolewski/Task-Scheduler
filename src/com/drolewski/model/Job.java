@@ -45,4 +45,8 @@ public class Job {
                 ", weight=" + weight +
                 '}';
     }
+
+    public double calculateTest(){
+        return this.getDurationTime() % 10 * this.getWeight();
+    }
 }
