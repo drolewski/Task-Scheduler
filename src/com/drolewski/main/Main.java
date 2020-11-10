@@ -21,7 +21,10 @@ public class Main {
         // here is place to run algorithm on input data in verifierDataList
         for(InputData inputData : jobsList) {
             SingleProcessorApproximation approximation = new SingleProcessorApproximation();
+            long start = System.currentTimeMillis();
             List<Integer> scheduledJobs = approximation.approximationAlgorithm(inputData.getJobs());
+            long finish = System.currentTimeMillis();
+            System.out.println(inputData.getFileName() + " : " + (finish - start));
             saveOutputDataFile(scheduledJobs, inputData);
         }
 
