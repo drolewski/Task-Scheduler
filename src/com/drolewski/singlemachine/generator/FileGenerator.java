@@ -13,7 +13,7 @@ import static com.drolewski.singlemachine.verifier.Verifier.evaluateOutputData;
 public class FileGenerator {
     public static void saveInputFile(List<Job> jobs) {
         try {
-            FileWriter inputFile = new FileWriter("src/com/drolewski/generator/generatedData/in136792_" + jobs.size() + ".txt");
+            FileWriter inputFile = new FileWriter("src/com/drolewski/singlemachine/generator/generatedData/in136792_" + jobs.size() + ".txt");
             BufferedWriter out = new BufferedWriter(inputFile);
             out.write(jobs.size() + "\n");
             for(Job job : jobs){
@@ -27,7 +27,7 @@ public class FileGenerator {
 
     public static void saveOutputFile(int instanceSize) {
         try {
-            FileWriter outputFile = new FileWriter("src/com/drolewski/generator/generatedData/out136792_" + instanceSize + ".txt");
+            FileWriter outputFile = new FileWriter("src/com/drolewski/singlemachine/generator/generatedData/out136792_" + instanceSize + ".txt");
             BufferedWriter out = new BufferedWriter(outputFile);
             out.write("0\n");
             for(int i = 1; i <= instanceSize; ++i){
@@ -41,7 +41,7 @@ public class FileGenerator {
 
     public static void saveOutputDataFile(List<Integer> jobsSchedule, InputData inputData){
         try {
-            FileWriter outputFile = new FileWriter("src/com/drolewski/generator/generatedData/" + "out" + inputData.getFileName().substring(2,9) + jobsSchedule.size() + ".txt");
+            FileWriter outputFile = new FileWriter("src/com/drolewski/singlemachine/generator/generatedData/" + "out" + inputData.getFileName().substring(2,9) + jobsSchedule.size() + ".txt");
             BufferedWriter out = new BufferedWriter(outputFile);
             int value = evaluateOutputData(jobsSchedule, inputData.getJobs());
             out.write(value + "\n");

@@ -14,7 +14,7 @@ import static com.drolewski.singlemachine.verifier.Verifier.verifySolution;
 public class Main {
     public static void main(String[] args) {
         // read data from input - all files
-        List<InputData> jobsList = readInputData("src/com/drolewski/generator/generatedData");
+        List<InputData> jobsList = readInputData("src/com/drolewski/singlemachine/generator/generatedData");
 
         // here is place to run algorithm on input data in verifierDataList
         for(InputData inputData : jobsList) {
@@ -27,7 +27,7 @@ public class Main {
         }
 
         // read data from algorithm output
-        List<OutputData> outputData = readOutputData("src/com/drolewski/generator/generatedData");
+        List<OutputData> outputData = readOutputData("src/com/drolewski/singlemachine/generator/generatedData");
 
         // validate solution
         for (int i = 0; i < outputData.size(); ++i) {
