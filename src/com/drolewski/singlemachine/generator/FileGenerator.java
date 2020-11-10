@@ -1,14 +1,14 @@
-package com.drolewski.generator;
+package com.drolewski.singlemachine.generator;
 
-import com.drolewski.model.Job;
-import com.drolewski.verifier.InputData;
+import com.drolewski.singlemachine.model.Job;
+import com.drolewski.singlemachine.verifier.InputData;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import static com.drolewski.verifier.Verifier.evaluateOutputData;
+import static com.drolewski.singlemachine.verifier.Verifier.evaluateOutputData;
 
 public class FileGenerator {
     public static void saveInputFile(List<Job> jobs) {

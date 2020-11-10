@@ -1,4 +1,4 @@
-package com.drolewski.verifier;
+package com.drolewski.singlemachine.verifier;
 
 import java.util.List;
 

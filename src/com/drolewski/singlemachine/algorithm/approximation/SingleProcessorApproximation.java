@@ -1,6 +1,6 @@
-package com.drolewski.algorithm.approximation;
+package com.drolewski.singlemachine.algorithm.approximation;
 
-import com.drolewski.model.Job;
+import com.drolewski.singlemachine.model.Job;
 
 import java.util.ArrayList;
 import java.util.Comparator;

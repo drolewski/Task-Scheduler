@@ -1,6 +1,6 @@
-package com.drolewski.verifier;
+package com.drolewski.singlemachine.verifier;
 
-import com.drolewski.model.Job;
+import com.drolewski.singlemachine.model.Job;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.drolewski.model;
+package com.drolewski.singlemachine.model;
 
 public class JobWithRatio {
     private Job job;

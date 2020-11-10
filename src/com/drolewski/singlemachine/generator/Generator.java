@@ -1,6 +1,6 @@
-package com.drolewski.generator;
+package com.drolewski.singlemachine.generator;
 
-import com.drolewski.model.Job;
+import com.drolewski.singlemachine.model.Job;
 
 import java.util.List;
 
