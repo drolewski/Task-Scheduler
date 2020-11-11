@@ -1,7 +1,9 @@
 package com.drolewski.fivemachines.main;
 
+import com.drolewski.fivemachines.generator.Generator;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Ahh shit! here we go again");
+        Generator.generateAllInstances();
     }
 }
