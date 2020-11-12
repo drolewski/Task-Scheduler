@@ -3,11 +3,10 @@ package com.drolewski.fivemachines.verifier;
 import com.drolewski.fivemachines.model.Job;
 import com.drolewski.fivemachines.model.Machine;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
+
+import static com.drolewski.fivemachines.verifier.Verifier.evaluateOutputData;
 
 public class InstanceReader {
     private static InputData readInputFile(String fileName) {
@@ -42,7 +41,7 @@ public class InstanceReader {
     private static OutputData readOutputFile(String fileName) {
         Map<Integer, List<Integer>> jobs = new HashMap<>();
         int algorithmValue = 0;
-        int machineNumber = 1;
+        int machineNumber = 0;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line = reader.readLine();
@@ -72,6 +71,7 @@ public class InstanceReader {
         for (File file : Objects.requireNonNull(directory.listFiles())) {
             if (file.getName().matches("^in[0-9]{6}_[0-9]+\\.txt$")) {
                 InputData inputData = InstanceReader.readInputFile(file.getPath());
+                inputData.setFileName(file.getName());
                 jobDataList.add(inputData);
             }
         }
@@ -89,4 +89,28 @@ public class InstanceReader {
         }
         return orderedTaskList;
     }
+
+    public static void saveOutputFile(Map<Integer, List<Integer>> result, InputData inputData){
+        try {
+            int jobsSum = 0;
+            for(int i = 0; i < 5; i++){
+                jobsSum += result.get(i).size();
+            }
+            System.out.println(inputData.getFileName());
+            FileWriter outputFile = new FileWriter("src/com/drolewski/fivemachines/generator/generatedData/" + "out" + inputData.getFileName().substring(2,9) + jobsSum + ".txt");
+            BufferedWriter out = new BufferedWriter(outputFile);
+            int value = evaluateOutputData(result, inputData.getJobs(), inputData.getMachines());
+            out.write(value + "\n");
+            for(int i = 0; i < 5; i++){
+                for(Integer res : result.get(i)){
+                    out.write(res + " ");
+                }
+                out.write("\n");
+            }
+            out.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

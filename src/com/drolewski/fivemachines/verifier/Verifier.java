@@ -14,12 +14,12 @@ public class Verifier {
         return verifySolution(outputData) && outputData.getCriteriaValue() == lateTaskValue;
     }
 
-    private static int evaluateOutputData(Map<Integer, List<Integer>> scheduledJobs, List<Job> jobs, List<Machine> machines) {
+    public static int evaluateOutputData(Map<Integer, List<Integer>> scheduledJobs, List<Job> jobs, List<Machine> machines) {
         int lateTaskValue = 0;
         for (Integer jobsInOrder : scheduledJobs.keySet()) {
             int currentTime = 1;
             int machineF = 0;
-            Machine machine = machines.get(jobsInOrder - 1);
+            Machine machine = machines.get(jobsInOrder);
             for (Integer jobFromOrder : scheduledJobs.get(jobsInOrder)) {
                 Job job = jobs.get(jobFromOrder - 1);
                 if (currentTime < job.getReadyMoment()) {
