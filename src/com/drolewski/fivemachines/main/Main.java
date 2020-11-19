@@ -14,7 +14,7 @@ import static com.drolewski.fivemachines.verifier.Verifier.verifySolution;
 public class Main {
     public static void main(String[] args) {
         // generate instances
-        Generator.generateAllInstances();
+//        Generator.generateAllInstances();
 
         // Read input instances
         List<InputData> jobsList = readInputData("src/com/drolewski/fivemachines/generator/generatedData");

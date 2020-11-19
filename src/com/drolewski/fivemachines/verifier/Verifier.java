@@ -15,22 +15,20 @@ public class Verifier {
     }
 
     public static int evaluateOutputData(Map<Integer, List<Integer>> scheduledJobs, List<Job> jobs, List<Machine> machines) {
-        int lateTaskValue = 0;
+        int lateTaskValue = 1;
         for (Integer jobsInOrder : scheduledJobs.keySet()) {
             int currentTime = 1;
-            int machineF = 0;
             Machine machine = machines.get(jobsInOrder);
             for (Integer jobFromOrder : scheduledJobs.get(jobsInOrder)) {
                 Job job = jobs.get(jobFromOrder - 1);
                 if (currentTime < job.getReadyMoment()) {
                     currentTime = job.getReadyMoment();
                 }
-                currentTime += job.getDurationTime() / machine.getSpeed();
-                machineF += currentTime - job.getReadyMoment();
+                currentTime += job.getDurationTime() * machine.getSpeed();
+                lateTaskValue += (currentTime - job.getReadyMoment()) / scheduledJobs.keySet().size();
             }
-            lateTaskValue += machineF;
         }
-        return lateTaskValue / scheduledJobs.keySet().size();
+        return lateTaskValue;
     }
 
     private static boolean verifySolution(OutputData outputData) {
