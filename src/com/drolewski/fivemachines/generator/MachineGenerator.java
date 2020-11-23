@@ -17,7 +17,7 @@ public class MachineGenerator {
             if (i == positionOf1) {
                 result.add(machine1);
             } else {
-                var machine = new Machine(((double) Math.round(random.nextDouble() * 1000) + random.nextInt(15000)) / 1000);
+                var machine = new Machine((double) Math.round(random.nextDouble() * 1000) / 1000);
                 result.add(machine);
             }
         }

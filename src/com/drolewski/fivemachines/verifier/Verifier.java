@@ -24,7 +24,7 @@ public class Verifier {
                 if (currentTime < job.getReadyMoment()) {
                     currentTime = job.getReadyMoment();
                 }
-                currentTime += job.getDurationTime() * machine.getSpeed();
+                currentTime += job.getDurationTime() / machine.getSpeed();
                 lateTaskValue += (currentTime - job.getReadyMoment()) / scheduledJobs.keySet().size();
             }
         }
