@@ -40,7 +40,7 @@ public class InstanceReader {
 
     private static OutputData readOutputFile(String fileName) {
         Map<Integer, List<Integer>> jobs = new HashMap<>();
-        int algorithmValue = 0;
+        double algorithmValue = 0;
         int machineNumber = 0;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
@@ -55,7 +55,7 @@ public class InstanceReader {
                     jobs.put(machineNumber, machineSchedule);
                     machineNumber++;
                 } else {
-                    algorithmValue = Integer.parseInt(line);
+                    algorithmValue = Double.parseDouble(line);
                 }
                 line = reader.readLine();
             }
@@ -96,10 +96,9 @@ public class InstanceReader {
             for(int i = 0; i < 5; i++){
                 jobsSum += result.get(i).size();
             }
-            System.out.println(inputData.getFileName());
             FileWriter outputFile = new FileWriter("src/com/drolewski/fivemachines/generator/generatedData/" + "out" + inputData.getFileName().substring(2,9) + jobsSum + ".txt");
             BufferedWriter out = new BufferedWriter(outputFile);
-            int value = evaluateOutputData(result, inputData.getJobs(), inputData.getMachines());
+            double value = evaluateOutputData(result, inputData.getJobs(), inputData.getMachines());
             out.write(value + "\n");
             for(int i = 0; i < 5; i++){
                 for(Integer res : result.get(i)){

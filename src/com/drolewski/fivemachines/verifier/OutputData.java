@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class OutputData {
     private Map<Integer, List<Integer>> scheduledJobs;
-    private int criteriaValue;
+    private double criteriaValue;
     private String fileName;
 
-    public OutputData(Map<Integer, List<Integer>> scheduledJobs, int criteriaValue, String fileName) {
+    public OutputData(Map<Integer, List<Integer>> scheduledJobs, double criteriaValue, String fileName) {
         this.scheduledJobs = scheduledJobs;
         this.criteriaValue = criteriaValue;
         this.fileName = fileName;
@@ -22,7 +22,7 @@ public class OutputData {
         this.scheduledJobs = scheduledJobs;
     }
 
-    public int getCriteriaValue() {
+    public double getCriteriaValue() {
         return criteriaValue;
     }
 

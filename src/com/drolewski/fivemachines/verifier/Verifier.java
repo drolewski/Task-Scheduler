@@ -9,26 +9,26 @@ import java.util.Map;
 public class Verifier {
 
     public static boolean verifySolution(OutputData outputData, List<Job> jobs, List<Machine> machines) {
-        int lateTaskValue = evaluateOutputData(outputData.getScheduledJobs(), jobs, machines);
+        double lateTaskValue = evaluateOutputData(outputData.getScheduledJobs(), jobs, machines);
         System.out.println(lateTaskValue);
         return verifySolution(outputData) && outputData.getCriteriaValue() == lateTaskValue;
     }
 
-    public static int evaluateOutputData(Map<Integer, List<Integer>> scheduledJobs, List<Job> jobs, List<Machine> machines) {
-        int lateTaskValue = 1;
+    public static double evaluateOutputData(Map<Integer, List<Integer>> scheduledJobs, List<Job> jobs, List<Machine> machines) {
+        double lateTaskValue = 1.0;
         for (Integer jobsInOrder : scheduledJobs.keySet()) {
-            int currentTime = 1;
+            double currentTime = 1.0;
             Machine machine = machines.get(jobsInOrder);
             for (Integer jobFromOrder : scheduledJobs.get(jobsInOrder)) {
                 Job job = jobs.get(jobFromOrder - 1);
                 if (currentTime < job.getReadyMoment()) {
                     currentTime = job.getReadyMoment();
                 }
-                currentTime += job.getDurationTime() / machine.getSpeed();
-                lateTaskValue += (currentTime - job.getReadyMoment()) / scheduledJobs.keySet().size();
+                currentTime += job.getDurationTime() * (1.0/machine.getSpeed());
+                lateTaskValue += currentTime - job.getReadyMoment();
             }
         }
-        return lateTaskValue;
+        return lateTaskValue / jobs.size();
     }
 
     private static boolean verifySolution(OutputData outputData) {
