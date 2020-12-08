@@ -9,48 +9,55 @@ import java.util.stream.Collectors;
 
 public class Algorithm {
     public Map<Integer, List<Integer>> algorithm(InputData inputData) {
-        List<Machine> machines = inputData.getMachines();
         List<Job> jobs = inputData.getJobs();
 
         List<Job> jobsSortedByReadyMoment = jobs.stream()
                 .sorted(Comparator
                         .comparingInt(Job::getReadyMoment)
-                        .thenComparing(Comparator.comparingInt(Job::getDurationTime).reversed()))
+                        .thenComparing(Job::getDurationTime)
+                )
                 .collect(Collectors.toList());
 
-        List<Machine> sortedMachines = machines.stream()
-                .sorted(Comparator.comparingDouble(Machine::getSpeed))
-                .collect(Collectors.toList());
-
-//        double speedSum = (double) Math.round(machines.stream().map(Machine::getSpeed).reduce(0.0, Double::sum) * 1000) / 1000;
-
-//        int jobsSum = 0;
-        Map<Integer, List<Job>> firstSorted = new HashMap<>();
-        for (Machine machine : sortedMachines) {
-//            int jobsNumber = (int) Math.round(jobs.size() * machine.getSpeed() / speedSum);
-//            jobsSum += jobsNumber;
-            List<Job> sortedMachine = new ArrayList<>();
-            for (int i = 0; i < jobsSortedByReadyMoment.size(); i++) {
-                if (i % 5 == sortedMachines.indexOf(machine)) {
-                    sortedMachine.add(jobsSortedByReadyMoment.get(i));
-                }
-            }
-            firstSorted.put(machines.indexOf(machine), sortedMachine);
+        List<Machine> machines = inputData.getMachines();
+        for (Job job : jobsSortedByReadyMoment) {
+            int machineIndex = calculateTime(job, machines);
+            machines.get(machineIndex).getJobs().add(job);
         }
-        // proporcja zadań dla maszyn w zależności od speedSum
-        // zadania najdłuższe dostaną maszyny najwolniejsze
 
-        return algorithmResult(firstSorted, jobs);
+        Map<Integer, List<Integer>> integerListMap = algorithmResult(machines, jobs, machines);
+        System.out.println(integerListMap);
+        return integerListMap;
     }
 
-    private Map<Integer, List<Integer>> algorithmResult(Map<Integer, List<Job>> firstSorted, List<Job> jobs) {
-        Map<Integer, List<Integer>> result = new HashMap<>();
-        for (int i = 0; i < 5; i++) {
-            List<Integer> resultJobs = new ArrayList<>();
-            for (Job job : firstSorted.get(i)) {
-                resultJobs.add(jobs.indexOf(job) + 1);
+    private int calculateTime(Job job, List<Machine> machines) {
+        int bestIndex = 0;
+        double bestValue = Double.MAX_VALUE;
+        for (Machine machine : machines) {
+            double currentValue = 0.0;
+            for (Job jobT : machine.getJobs()) {
+                if (currentValue < jobT.getReadyMoment()) {
+                    currentValue = jobT.getReadyMoment();
+                }
+                currentValue += jobT.getDurationTime() * (1.0 / machine.getSpeed());
             }
-            result.put(i, resultJobs);
+            currentValue += job.getDurationTime() - job.getReadyMoment();
+            if (bestValue >= currentValue) {
+                bestValue = currentValue;
+                bestIndex = machines.indexOf(machine);
+            }
+        }
+
+        return bestIndex;
+    }
+
+    private Map<Integer, List<Integer>> algorithmResult(List<Machine> sortedMachines, List<Job> jobs, List<Machine> machines) {
+        Map<Integer, List<Integer>> result = new HashMap<>();
+        for (Machine machine : sortedMachines) {
+            List<Integer> indexedJobs = new ArrayList<>();
+            for (Job job : machine.getJobs()) {
+                indexedJobs.add(jobs.indexOf(job) + 1);
+            }
+            result.put(machines.indexOf(machine), indexedJobs);
         }
         return result;
     }

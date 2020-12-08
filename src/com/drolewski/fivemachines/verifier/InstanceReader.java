@@ -83,6 +83,7 @@ public class InstanceReader {
         List<OutputData> orderedTaskList = new ArrayList<>();
         for (File file : Objects.requireNonNull(directory.listFiles())) {
             if (file.getName().matches("^out[0-9]{6}_[0-9]+\\.txt$")) {
+                System.out.println(file.getPath());
                 OutputData outputTaskList = InstanceReader.readOutputFile(file.getPath());
                 orderedTaskList.add(outputTaskList);
             }

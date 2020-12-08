@@ -30,4 +30,12 @@ public class Job {
         return this.getDurationTime() +
                 " " + this.getReadyMoment() + "\n";
     }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "durationTime=" + durationTime +
+                ", readyMoment=" + readyMoment +
+                '}';
+    }
 }
