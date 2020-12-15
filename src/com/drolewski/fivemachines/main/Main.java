@@ -22,8 +22,10 @@ public class Main {
         // Algorithm
         for(InputData inputData : jobsList){
             Algorithm algo = new Algorithm();
+            long start = System.currentTimeMillis();
             Map<Integer, List<Integer>> scheduledJobs = algo.algorithm(inputData);
-            // czasy
+            long finish = System.currentTimeMillis();
+            System.out.println(inputData.getFileName() + " : " + (finish - start));
             saveOutputFile(scheduledJobs, inputData);
         }
 

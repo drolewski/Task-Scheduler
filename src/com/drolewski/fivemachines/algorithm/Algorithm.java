@@ -24,9 +24,7 @@ public class Algorithm {
             machines.get(machineIndex).getJobs().add(job);
         }
 
-        Map<Integer, List<Integer>> integerListMap = algorithmResult(machines, jobs, machines);
-        System.out.println(integerListMap);
-        return integerListMap;
+        return algorithmResult(machines, jobs, machines);
     }
 
     private int calculateTime(Job job, List<Machine> machines) {

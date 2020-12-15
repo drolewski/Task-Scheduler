@@ -9,7 +9,7 @@ import java.util.Map;
 public class Verifier {
 
     public static boolean verifySolution(OutputData outputData, List<Job> jobs, List<Machine> machines) {
-        double lateTaskValue = evaluateOutputData(outputData.getScheduledJobs(), jobs, machines);
+        long lateTaskValue = Math.round(evaluateOutputData(outputData.getScheduledJobs(), jobs, machines));
         System.out.println(lateTaskValue);
         return verifySolution(outputData) && outputData.getCriteriaValue() == lateTaskValue;
     }

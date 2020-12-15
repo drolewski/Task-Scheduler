@@ -83,7 +83,6 @@ public class InstanceReader {
         List<OutputData> orderedTaskList = new ArrayList<>();
         for (File file : Objects.requireNonNull(directory.listFiles())) {
             if (file.getName().matches("^out[0-9]{6}_[0-9]+\\.txt$")) {
-                System.out.println(file.getPath());
                 OutputData outputTaskList = InstanceReader.readOutputFile(file.getPath());
                 orderedTaskList.add(outputTaskList);
             }
@@ -99,7 +98,7 @@ public class InstanceReader {
             }
             FileWriter outputFile = new FileWriter("src/com/drolewski/fivemachines/generator/generatedData/" + "out" + inputData.getFileName().substring(2,9) + jobsSum + ".txt");
             BufferedWriter out = new BufferedWriter(outputFile);
-            double value = evaluateOutputData(result, inputData.getJobs(), inputData.getMachines());
+            long value = Math.round(evaluateOutputData(result, inputData.getJobs(), inputData.getMachines()));
             out.write(value + "\n");
             for(int i = 0; i < 5; i++){
                 for(Integer res : result.get(i)){
