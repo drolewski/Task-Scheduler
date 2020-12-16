@@ -40,23 +40,27 @@ public class InstanceReader {
 
     private static OutputData readOutputFile(String fileName) {
         Map<Integer, List<Integer>> jobs = new HashMap<>();
-        double algorithmValue = 0;
+        int algorithmValue = 0;
         int machineNumber = 0;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line = reader.readLine();
+            int lineCounter = 1;
             while (line != null) {
                 String[] jobOrder = line.split("\\s");
-                if (jobOrder.length > 2) {
+                if (lineCounter > 1) {
                     List<Integer> machineSchedule = new ArrayList<>();
                     for (String task : jobOrder) {
-                        machineSchedule.add(Integer.parseInt(task));
+                        if(!task.equals("")){
+                            machineSchedule.add(Integer.parseInt(task));
+                        }
                     }
                     jobs.put(machineNumber, machineSchedule);
                     machineNumber++;
                 } else {
-                    algorithmValue = Double.parseDouble(line);
+                    algorithmValue = Integer.parseInt(line);
                 }
+                lineCounter++;
                 line = reader.readLine();
             }
         } catch (IOException ex) {
