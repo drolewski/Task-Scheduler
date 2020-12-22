@@ -1,12 +1,12 @@
 package com.drolewski.threemachines.main;
 
+import com.drolewski.threemachines.algorithm.Algorithm;
 import com.drolewski.threemachines.verifier.InputData;
 import com.drolewski.threemachines.verifier.OutputData;
 
 import java.util.List;
 
-import static com.drolewski.threemachines.verifier.InstanceReader.readInputData;
-import static com.drolewski.threemachines.verifier.InstanceReader.readOutputData;
+import static com.drolewski.threemachines.verifier.InstanceReader.*;
 import static com.drolewski.threemachines.verifier.Verifier.verifySolution;
 
 public class Main {
@@ -18,12 +18,12 @@ public class Main {
 
         // Algorithm
         for (InputData inputData : jobsList) {
-//            Algorithm algo = new Algorithm();
-//            long start = System.currentTimeMillis();
-//            Map<Integer, List<Integer>> scheduledJobs = algo.algorithm(inputData);
-//            long finish = System.currentTimeMillis();
-//            System.out.println(inputData.getFileName() + " : " + (finish - start));
-//            saveOutputFile(scheduledJobs, inputData);
+            Algorithm algo = new Algorithm();
+            long start = System.currentTimeMillis();
+            List<Integer> scheduledJobs = algo.algorithm(inputData.getJobs());
+            long finish = System.currentTimeMillis();
+            System.out.println(inputData.getFileName() + " : " + (finish - start));
+            saveOutputFile(scheduledJobs, inputData);
         }
 
         // Read output

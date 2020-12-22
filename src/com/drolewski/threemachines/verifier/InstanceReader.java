@@ -20,12 +20,14 @@ public class InstanceReader {
                 String[] jobParameters = line.split("\\s");
                 if (jobParameters.length == 5) {
                     var jobPerMachine = new ArrayList<Integer>();
+                    int jobsSum = Integer.parseInt(jobParameters[0]) + Integer.parseInt(jobParameters[1]) + Integer.parseInt(jobParameters[2]);
                     jobPerMachine.add(Integer.parseInt(jobParameters[0]));
                     jobPerMachine.add(Integer.parseInt(jobParameters[1]));
                     jobPerMachine.add(Integer.parseInt(jobParameters[2]));
                     var job = new Job(jobPerMachine,
                             Integer.parseInt(jobParameters[3]),
-                            Integer.parseInt(jobParameters[4]));
+                            Integer.parseInt(jobParameters[4]),
+                            jobsSum);
                     jobs.add(job);
                 }
                 line = reader.readLine();
@@ -82,8 +84,7 @@ public class InstanceReader {
 
     public static void saveOutputFile(List<Integer> result, InputData inputData){
         try {
-            int jobsSum = 0;
-            FileWriter outputFile = new FileWriter("src/com/drolewski/fivemachines/generator/generatedData/" + "out" + inputData.getFileName().substring(2,9) + jobsSum + ".txt");
+            FileWriter outputFile = new FileWriter("src/com/drolewski/threemachines/generator/generatedData/" + "out" + inputData.getFileName().substring(2,9) + result.size() + ".txt");
             BufferedWriter out = new BufferedWriter(outputFile);
             long value = Math.round(evaluateOutputData(result, inputData.getJobs()));
             out.write(value + "\n");

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Job {
     private List<Integer> jobsPerMachine;
+    private int jobsSum;
     private int endTime;
     private int weight;
 
@@ -18,6 +19,13 @@ public class Job {
         this.jobsPerMachine = jobs;
         this.endTime = endTime;
         this.weight = weight;
+    }
+
+    public Job(List<Integer> jobs, int endTime, int weight, int jobsSum) {
+        this.jobsPerMachine = jobs;
+        this.endTime = endTime;
+        this.weight = weight;
+        this.jobsSum = jobsSum;
     }
 
     public List<Integer> getJobsPerMachine() {
@@ -44,10 +52,19 @@ public class Job {
         this.weight = weight;
     }
 
+    public int getJobsSum() {
+        return jobsSum;
+    }
+
+    public void setJobsSum(int jobsSum) {
+        this.jobsSum = jobsSum;
+    }
+
     @Override
     public String toString() {
         return "Job{" +
                 "jobsPerMachine=" + jobsPerMachine +
+                ", jobsSum=" + jobsSum +
                 ", endTime=" + endTime +
                 ", weight=" + weight +
                 '}';
