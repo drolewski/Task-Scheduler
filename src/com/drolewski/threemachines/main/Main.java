@@ -17,14 +17,14 @@ public class Main {
         List<InputData> jobsList = readInputData("src/com/drolewski/threemachines/generator/generatedData");
 
         // Algorithm
-        for (InputData inputData : jobsList) {
-            Algorithm algo = new Algorithm();
-            long start = System.currentTimeMillis();
-            List<Integer> scheduledJobs = algo.algorithm(inputData.getJobs());
-            long finish = System.currentTimeMillis();
-            System.out.println(inputData.getFileName() + " : " + (finish - start));
-            saveOutputFile(scheduledJobs, inputData);
-        }
+//        for (InputData inputData : jobsList) {
+//            Algorithm algo = new Algorithm();
+//            long start = System.currentTimeMillis();
+//            List<Integer> scheduledJobs = algo.algorithm(inputData.getJobs());
+//            long finish = System.currentTimeMillis();
+//            System.out.println(inputData.getFileName() + " : " + (finish - start));
+//            saveOutputFile(scheduledJobs, inputData);
+//        }
 
         // Read output
         List<OutputData> outputData = readOutputData("src/com/drolewski/threemachines/generator/generatedData");
