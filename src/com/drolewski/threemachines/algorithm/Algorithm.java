@@ -11,10 +11,7 @@ public class Algorithm {
 
     public List<Integer> algorithm(List<Job> jobs) {
         List<Job> result = jobs.stream().sorted(
-                Comparator.comparingInt(Job::getEndTime)
-                        .thenComparing(
-                                Comparator.comparingInt(Job::getJobsSum).reversed())
-        ).parallel()
+                                Comparator.comparingDouble(Job::getValue))
         .collect(Collectors.toList());
         return generateResult(jobs, result);
     }

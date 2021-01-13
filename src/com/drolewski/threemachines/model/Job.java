@@ -82,4 +82,8 @@ public class Job {
         resultString.append("\n");
         return resultString.toString();
     }
+
+    public double getValue() {
+        return this.jobsSum / (double) this.weight;
+    }
 }
